@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class Run : MonoBehaviour
 {
     public Animator ani; // nhiệm vụ quản lí toàn bộ animation
+    public bool nen_dat;
     
     // Start is called before the first frame update
     void Start()
@@ -39,5 +41,10 @@ public class Run : MonoBehaviour
             ani.SetBool("isRunning",false);
         }
         
+    }
+    //tinh toán khi chạm đất mới được nhảy lên tiếp
+    private void OnCollisionEnter2D(Collision2D col)//khi đụng tới nền đất thì sẽ chạy hàm này
+    {
+        throw new NotImplementedException();
     }
 }
