@@ -7,6 +7,7 @@ public class Run : MonoBehaviour
 {
     public Animator ani; // nhiệm vụ quản lí toàn bộ animation
     public bool nen_dat;
+    public bool isRight = true;
     
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,7 @@ public class Run : MonoBehaviour
             ani.Play("Running");
             transform.Translate(Time.deltaTime * 3,0,0);
             transform.localScale = new Vector3(1F,1F,1F );
+            isRight = true;
         }
         else if(Input.GetKey(KeyCode.LeftArrow))
         {
@@ -31,10 +33,23 @@ public class Run : MonoBehaviour
             ani.Play("Running");
             transform.Translate(Time.deltaTime * -3,0,0);
             transform.localScale = new Vector3(-1F,1F,1F );
+            isRight = false;
         }
         else if (Input.GetKey(KeyCode.UpArrow))
         {
-            transform.Translate(0,Time.deltaTime * 15,0);
+            if (nen_dat == true)
+            {
+                if (isRight == true)
+                {
+                    transform.Translate(Time.deltaTime * 5,2.5F,0);
+
+                }
+                else
+                {
+                    transform.Translate(- Time.deltaTime * 5,2.5F,0);
+                }
+                nen_dat = false;
+            }
         }
         else
         {
@@ -45,6 +60,14 @@ public class Run : MonoBehaviour
     //tinh toán khi chạm đất mới được nhảy lên tiếp
     private void OnCollisionEnter2D(Collision2D col)//khi đụng tới nền đất thì sẽ chạy hàm này
     {
-        throw new NotImplementedException();
+        if (col.gameObject.tag == "nen_dat")
+        {
+            nen_dat = true;
+            Console.WriteLine(nen_dat);
+        }
+       
+        {
+            
+        }
     }
 }
