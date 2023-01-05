@@ -38,7 +38,7 @@ public class Run : MonoBehaviour
         else if (Input.GetKey(KeyCode.UpArrow))
         {
             if (nen_dat == true)
-            {
+            {       
                 if (isRight == true)
                 {
                     transform.Translate(Time.deltaTime * 5,2.5F,0);
@@ -55,7 +55,6 @@ public class Run : MonoBehaviour
         {
             ani.SetBool("isRunning",false);
         }
-        
     }
     //tinh toán khi chạm đất mới được nhảy lên tiếp
     private void OnCollisionEnter2D(Collision2D col)//khi đụng tới nền đất thì sẽ chạy hàm này
@@ -63,11 +62,7 @@ public class Run : MonoBehaviour
         if (col.gameObject.tag == "nen_dat")
         {
             nen_dat = true;
-            Console.WriteLine(nen_dat);
-        }
-       
-        {
-            
+         
         }
     }
 }
